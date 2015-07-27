@@ -13,7 +13,7 @@
     // Record audio
     //
     function recordAudio() {
-        var src = "myrecording.amr";
+        var src = "myrecording.mp3";
         var mediaRec = new Media(src, onSuccess, onError);
 
         // Record audio
@@ -33,9 +33,7 @@
 
     // device APIs are available
     //
-    function onDeviceReady() {
-        recordAudio();
-    }
+    
 
     // onSuccess Callback
     //
@@ -55,10 +53,30 @@
     function setAudioPosition(position) {
         document.getElementById('audio_position').innerHTML = position;
     }
-
+	
+	
+	function playAudio("myrecording.mp3") {
+    // Play the audio file at url
+    var my_media = new Media("myrecording.mp3",
+        // success callback
+        function () {
+            console.log("playAudio():Audio Success");
+        },
+        // error callback
+        function (err) {
+            console.log("playAudio():Audio Error: " + err);
+        }
+    );
+	my_media.play();
+	}
+	
+	
     </script>
   </head>
   <body>
+	<button type="button" onclick="recordAudio"> start recording </button>
+	<button type="button" onclick="playAudio"> PLAY(url) </button>
+	<button type="button" onclick="playAudio"> PLAY(url) </button>
     <p id="media">Recording audio...</p>
     <p id="audio_position"></p>
   </body>
